@@ -1,11 +1,25 @@
-import './App.css';
+import { Switch, Route } from 'react-router-dom';
+import CharacterInfo from './components/characters/CharacterInfo';
+import CharacterPage from './components/characters/CharacterPage';
+import Footer from './components/Footer';
+import Header from './components/Header';
+import HeroSection from './components/HeroSection';
+import Home from './components/Home';
 
-function App() {
+const App = () => {
 	return (
 		<div className='App'>
-			<h2>APP WORKING</h2>
+			<Header />
+			<HeroSection />
+			<Switch>
+				<Route exact path='/characters' component={CharacterPage} />
+				<Route path='/characters/:id' component={CharacterInfo} />
+
+				<Route exact path='/' component={Home} />
+			</Switch>
+			<Footer />
 		</div>
 	);
-}
+};
 
 export default App;
